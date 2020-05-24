@@ -26,6 +26,7 @@
     "start:server": "nodemon --watch server ./bin/www",
     "start:web": "react-scripts start",
     "build": "react-scripts build",
+    "test:server": "jest server/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
