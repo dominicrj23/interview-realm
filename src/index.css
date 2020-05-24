@@ -5,3 +5,21 @@
     line-height: 5rem;
     padding: 0 3rem;
 }
+
+.view .edit-text {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    margin: auto 0;
+}
+
+.view .edit-text:after {
+    content: '🖉'
+}
+
+.todo-list li label {
+    padding-left: 100px;
+}
