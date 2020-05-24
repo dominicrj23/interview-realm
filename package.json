@@ -30,7 +30,10 @@
     "overrides": [
       {
         "files": "src/**",
-        "extends": ["react-app", "prettier/react"]
+        "extends": [
+          "react-app",
+          "prettier/react"
+        ]
       }
     ]
   },
