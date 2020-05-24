@@ -1,7 +1,14 @@
-import { APP, LOCALSTORAGE, TODO } from './actions';
+import { APP, LOCALSTORAGE, TODO, SERVER } from './actions';
 
 const localStorageKey = 'todo-app';
-const updateActions = [TODO.ADD, TODO.TOGGLE, TODO.UPDATE];
+const updateActions = [
+    TODO.ADD,
+    TODO.TOGGLE,
+    TODO.UPDATE,
+    SERVER.REHYDRATE,
+    SERVER.UPDATE,
+    SERVER.CREATED
+];
 
 export default store => next => action => {
     if (action.type === APP.INIT) {
