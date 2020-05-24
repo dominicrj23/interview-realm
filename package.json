@@ -10,14 +10,21 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "lint": "eslint --ext js,ts,jsx,tsx src/",
-    "start": "react-scripts start",
+    "lint": "eslint --ext js,ts,jsx,tsx src/ server/",
+    "start": "npm-run-all -p start:*",
+    "start:server": "nodemon --watch server ./bin/www",
+    "start:web": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
