@@ -11,9 +11,7 @@ export const TodoList: FC = () => {
     return (
         <ul className={clsx('todo-list', { empty: todos.length === 0 })}>
             {todos.map(todo => (
-                <>
-                    <TodoItem {...todo} />
-                </>
+                <TodoItem key={todo.id} {...todo} />
             ))}
         </ul>
     );
