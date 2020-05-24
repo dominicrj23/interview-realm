@@ -24,21 +24,25 @@ app.post(`/create`, async (req, res) => {
     const { text } = req.body;
     const { createTask, getTask } = req.db;
     const id = uuid();
-    createTask({ text, id });
+    createTask({ text, id, completed: false });
     const task = getTask(id);
     return res.status(201).send(task);
 });
 
 app.put(`/:id`, async (req, res) => {
     const { id } = req.params;
-    const { text } = req.body;
+    const { text, completed } = req.body;
     const { updateTask, getTask } = req.db;
 
     const task = getTask(id);
     if (!task) {
         return res.status(404).send();
     }
-    updateTask(id, { text });
+
+    updateTask(id, {
+        text: text !== undefined ? text : task.text,
+        completed: completed !== undefined ? completed : task.completed
+    });
     const updatedTask = getTask(id);
     return res.status(202).send(updatedTask);
 });
