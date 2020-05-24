@@ -1,0 +1,7 @@
+.todo-list.empty::after {
+    content: 'Add you first todo';
+    font-size: 3rem;
+    opacity: 0.5;
+    line-height: 5rem;
+    padding: 0 3rem;
+}
