@@ -8,7 +8,7 @@ import React, {
     ChangeEvent
 } from 'react';
 import clsx from 'clsx';
-import { TOGGLE, UPDATE } from '../actions';
+import { TODO } from '../actions';
 import context from '../context';
 type TodoItemProp = {
     id: string;
@@ -27,7 +27,7 @@ export const TodoItem: FC<TodoItemProp> = ({ id, text, completed }) => {
     const toggleEditing = useCallback(toggle(setEditing), []);
 
     const toggleCompleted = useCallback(() => {
-        dispatch({ type: TOGGLE, payload: { id } });
+        dispatch({ type: TODO.TOGGLE, payload: { id } });
     }, [dispatch, id]);
 
     const handleTitleChange = useCallback(
@@ -44,7 +44,7 @@ export const TodoItem: FC<TodoItemProp> = ({ id, text, completed }) => {
     useEffect(() => {
         if (!editing && text !== title) {
             dispatch({
-                type: UPDATE,
+                type: TODO.UPDATE,
                 payload: { id, text: title }
             });
         }

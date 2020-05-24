@@ -1,5 +1,15 @@
-export const INIT = '@@app/init';
-export const REHYDRATE = '@@app/rehydrate';
-export const TOGGLE = '@@ITEM/toggle';
-export const UPDATE = '@@ITEM/update';
-export const ADD = '@@ITEM/add';
+export const APP = {
+    INIT: '@@app/init'
+};
+export const TODO = {
+    TOGGLE: '@@ITEM/toggle',
+    UPDATE: '@@ITEM/update',
+    ADD: '@@ITEM/add'
+};
+
+export const LOCALSTORAGE = {
+    REHYDRATE: '@@app/rehydrate'
+};
+export const SERVER = {
+    REHYDRATE: '@@server/rehydrate'
+};

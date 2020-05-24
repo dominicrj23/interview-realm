@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 
 import context from '../context';
-import { ADD } from '../actions';
+import { TODO } from '../actions';
 
 export const Header: FC = () => {
     const dispatch = context.useDispatchContext();
@@ -19,7 +19,7 @@ export const Header: FC = () => {
     const handleKeyUp = useCallback(
         (event: KeyboardEvent<HTMLInputElement>) => {
             if (event.keyCode === 13) {
-                dispatch({ type: ADD, payload: { text: title } });
+                dispatch({ type: TODO.ADD, payload: { text: title } });
                 setTitle('');
             } else if (event.keyCode === 27) {
                 setTitle('');

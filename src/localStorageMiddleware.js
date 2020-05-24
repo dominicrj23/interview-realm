@@ -1,19 +1,18 @@
-import { INIT, REHYDRATE, ADD, TOGGLE, UPDATE } from './actions';
+import { APP, LOCALSTORAGE, TODO } from './actions';
 
 const localStorageKey = 'todo-app';
-const updateActions = [ADD, TOGGLE, UPDATE];
+const updateActions = [TODO.ADD, TODO.TOGGLE, TODO.UPDATE];
 
 export default store => next => action => {
-    if (action.type === INIT) {
+    if (action.type === APP.INIT) {
         next(action);
         const rawValue = localStorage.getItem(localStorageKey);
         if (rawValue) {
             const value = JSON.parse(rawValue);
 
             store.dispatch({
-                type: REHYDRATE,
+                type: LOCALSTORAGE.REHYDRATE,
                 payload: {
-                    source: 'localstorage',
                     value
                 }
             });

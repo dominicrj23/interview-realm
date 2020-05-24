@@ -1,16 +1,13 @@
-import { REHYDRATE, ADD, TOGGLE, UPDATE } from './actions';
+import { TODO, LOCALSTORAGE } from './actions';
 import { v4 as uuid } from 'uuid';
 export default (state = {}, { type, payload }) => {
     console.log(type, payload);
 
     switch (type) {
-        case REHYDRATE: {
-            if (payload.source === 'localStorage') {
-                return payload.value;
-            }
-            return state;
+        case LOCALSTORAGE.REHYDRATE: {
+            return payload.value;
         }
-        case ADD: {
+        case TODO.ADD: {
             const id = uuid();
             return {
                 ...state,
@@ -21,7 +18,7 @@ export default (state = {}, { type, payload }) => {
                 }
             };
         }
-        case TOGGLE: {
+        case TODO.TOGGLE: {
             const { id } = payload;
             return {
                 ...state,
@@ -31,7 +28,7 @@ export default (state = {}, { type, payload }) => {
                 }
             };
         }
-        case UPDATE: {
+        case TODO.UPDATE: {
             const { id, ...value } = payload;
             return {
                 ...state,
