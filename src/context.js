@@ -1,11 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import createReducer from 'react-use/lib/createReducer';
-
-const reducer = (state, action) => state;
-
-const logger = store => next => action => {
-    next(action);
-};
+import taskReducer from './tasksReducer';
+import localStorageMiddleware from './localStorageMiddleware';
 
 export const generateContext = (reducer, middlewares) => {
     const useReducer = createReducer(...middlewares);
@@ -33,4 +29,4 @@ export const generateContext = (reducer, middlewares) => {
     return { useStateContext, useDispatchContext, Provider };
 };
 
-export default generateContext(reducer, [logger]);
+export default generateContext(taskReducer, [localStorageMiddleware]);
