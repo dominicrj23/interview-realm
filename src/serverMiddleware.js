@@ -40,5 +40,16 @@ export default store => next => action => {
         });
         return;
     }
+    if (action.type === TODO.UPDATE) {
+        next(action);
+        const { id, text } = action.payload;
+        updateTodo(id, { text }).then(todo => {
+            store.dispatch({
+                type: SERVER.UPDATE,
+                payload: todo
+            });
+        });
+        return;
+    }
     next(action);
 };
