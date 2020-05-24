@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
             };
         },
         deleteTask: id => {
-            const { [id]: task, ...rest } = tasks;
+            const { [id]: task, ...rest } = tasks; //eslint-disable-line no-unused-vars
             tasks = rest;
         }
     };
