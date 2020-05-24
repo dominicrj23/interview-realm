@@ -11,5 +11,6 @@ export const LOCALSTORAGE = {
     REHYDRATE: '@@app/rehydrate'
 };
 export const SERVER = {
-    REHYDRATE: '@@server/rehydrate'
+    REHYDRATE: '@@server/rehydrate',
+    UPDATE: '@@server/UPDATE'
 };
