@@ -16,13 +16,35 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
+    "lint": "eslint --ext js,ts,jsx,tsx src/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "./eslint.config.json",
+      "plugin:prettier/recommended"
+    ],
+    "overrides": [
+      {
+        "files": "src/**",
+        "extends": ["react-app", "prettier/react"]
+      }
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "proseWrap": "always",
+    "jsxBracketSameLine": true,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "useTabs": false,
+    "tabWidth": 4,
+    "jsxSingleQuote": true
   },
   "browserslist": {
     "production": [
@@ -35,5 +57,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5"
   }
 }
