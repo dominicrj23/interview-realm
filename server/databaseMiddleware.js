@@ -1,13 +1,34 @@
 const express = require('express');
 const app = express();
 
+let tasks = {};
 app.use(function (req, res, next) {
     req.db = {
-        listTasks: () => {},
-        getTask: id => {},
-        createTask: task => {},
-        updateTask: (id, task) => {},
-        deleteTask: id => {}
+        listTasks: () => {
+            return Object.keys(tasks);
+        },
+        getTask: id => {
+            return tasks[id];
+        },
+        createTask: task => {
+            tasks = {
+                ...tasks,
+                [task.id]: task
+            };
+        },
+        updateTask: (id, task) => {
+            tasks = {
+                ...tasks,
+                [id]: {
+                    ...tasks[id],
+                    ...task
+                }
+            };
+        },
+        deleteTask: id => {
+            const { [id]: task, ...rest } = tasks;
+            tasks = rest;
+        }
     };
     next();
 });
