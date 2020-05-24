@@ -37,18 +37,17 @@ export const TodoItem: FC<TodoItemProp> = ({ id, text, completed }) => {
         []
     );
 
+    const updateText = useCallback(() => {
+        setEditing(false);
+        dispatch({
+            type: TODO.UPDATE,
+            payload: { id, text: title }
+        });
+    }, [dispatch, id, title]);
+
     useEffect(() => {
         setTitle(text);
     }, [text]);
-
-    useEffect(() => {
-        if (!editing && text !== title) {
-            dispatch({
-                type: TODO.UPDATE,
-                payload: { id, text: title }
-            });
-        }
-    }, [dispatch, editing, id, text, title]);
 
     return (
         <li
@@ -68,7 +67,7 @@ export const TodoItem: FC<TodoItemProp> = ({ id, text, completed }) => {
             </div>
             <input
                 className='edit'
-                onBlur={toggleEditing}
+                onBlur={updateText}
                 value={title}
                 onChange={handleTitleChange}
             />
