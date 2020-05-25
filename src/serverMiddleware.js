@@ -11,6 +11,15 @@ const updateTodo = (id, item) =>
         body: JSON.stringify(item)
     }).then(res => res.json());
 
+const createTodo = item =>
+    fetch(`/api/create`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(item)
+    }).then(res => res.json());
+
 export default store => next => action => {
     if (action.type === APP.INIT) {
         next(action);
@@ -47,6 +56,20 @@ export default store => next => action => {
             store.dispatch({
                 type: SERVER.UPDATE,
                 payload: todo
+            });
+        });
+        return;
+    }
+    if (action.type === TODO.ADD) {
+        next(action);
+        const { id: oldId } = action.payload;
+        createTodo(action.payload).then(todo => {
+            store.dispatch({
+                type: SERVER.CREATED,
+                payload: {
+                    ...todo,
+                    oldId
+                }
             });
         });
         return;
