@@ -17,7 +17,7 @@
 }
 
 .view .edit-text:after {
-    content: '🖉'
+    content: '✎';
 }
 
 .todo-list li label {
