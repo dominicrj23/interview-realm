@@ -1,5 +1,4 @@
 import { TODO, LOCALSTORAGE } from './actions';
-import { v4 as uuid } from 'uuid';
 export default (state = {}, { type, payload }) => {
     console.log(type, payload);
 
@@ -8,13 +7,13 @@ export default (state = {}, { type, payload }) => {
             return payload.value;
         }
         case TODO.ADD: {
-            const id = uuid();
+            const { id, text } = payload;
             return {
                 ...state,
                 [id]: {
                     id,
                     completed: false,
-                    text: payload.text
+                    text
                 }
             };
         }

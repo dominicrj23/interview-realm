@@ -8,6 +8,7 @@ import React, {
 
 import context from '../context';
 import { TODO } from '../actions';
+const { v4: uuid } = require('uuid');
 
 export const Header: FC = () => {
     const dispatch = context.useDispatchContext();
@@ -19,7 +20,8 @@ export const Header: FC = () => {
     const handleKeyUp = useCallback(
         (event: KeyboardEvent<HTMLInputElement>) => {
             if (event.keyCode === 13) {
-                dispatch({ type: TODO.ADD, payload: { text: title } });
+                const id = uuid();
+                dispatch({ type: TODO.ADD, payload: { id, text: title } });
                 setTitle('');
             } else if (event.keyCode === 27) {
                 setTitle('');
